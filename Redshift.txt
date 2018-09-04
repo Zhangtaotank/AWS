@@ -5,9 +5,15 @@
 Begin;
 CREATE TEMP TABLE staging(LIKE deep_dive);
 COPY staging FROM 'S3://bucket/dd.csv'
-:'creds' COMPUPDATE OFF;
-DELETE FROM deep_dive d
+:'creds' COMPUPDATE OFF;  --Turn off automatic compression
+DELETE FROM deep_dive d 
 USING staging s WHERE d.aid = s.aid;
 INSERT INTO deep_dive SELECT * FROM staging;
 DROP TABLE staging;
 COMMIT;
+
+## ETL vs ELT
+ETL: Read data from a source, perform any desired changes, and then write it to a target. 
+     tools: such as DataStage, Informatica, or SQL Server Integration Services (SSIS). 
+ELT: Instead of transforming the data before it’s written, ELT leverages the target system to do the transformation. The data is copied to the target and then transformed in place.
+
