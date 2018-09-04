@@ -11,5 +11,3 @@ USING staging s WHERE d.aid = s.aid;
 INSERT INTO deep_dive SELECT * FROM staging;
 DROP TABLE staging;
 COMMIT;
-
-
