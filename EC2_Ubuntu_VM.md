@@ -49,9 +49,9 @@ git clone https://github.com/sampathweb/iris-api.git
 
 
 cd iris-api-app
-python env/create_env.py
+python3 env/create_env.py
 source activate env/venv
-python env/install_packages.py
+python3 env/install_packages.py
 
 python ml_src/build_model.py
 python run.py (Confirm that App is running)
@@ -72,8 +72,10 @@ environment = PYTHONPATH="/home/ubuntu/iris-api/env/bin/"
 
 <escape :wq>
 
-sudo supervisorctl reload
+I had mistakenly hit `Ctrl + s`, and got stuck in the insert mode. To get out of it use `Ctrl + q`.
 
+sudo supervisorctl reload
+sudo supervisorctl status
 <Your APP is live now>
 ```
 
